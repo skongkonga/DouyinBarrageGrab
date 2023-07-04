@@ -45,7 +45,6 @@ namespace BarrageGrab
             var socket = new WebSocketServer($"ws://127.0.0.1:{Appsetting.WsProt}");
             socket.RestartAfterListenError = true;//异常重启
 
-            dieout.Elapsed += Dieout_Elapsed;
             giftCountTimer.Elapsed += GiftCountTimer_Elapsed;
 
             this.grab.OnChatMessage += Grab_OnChatMessage;
@@ -387,7 +386,6 @@ namespace BarrageGrab
         {
             var now = DateTime.Now;
             var dieoutKvs = socketList.Where(w => w.Value.LastPing.AddSeconds(dieout.Interval * 3) < now).ToList();
-            dieoutKvs.ForEach(f => f.Value.Socket.Close());
         }
 
         private void Listen(IWebSocketConnection socket)
