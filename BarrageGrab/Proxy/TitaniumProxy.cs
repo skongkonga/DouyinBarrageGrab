@@ -192,9 +192,7 @@ namespace BarrageGrab.Proxy
         /// </summary>
         override public void Dispose()
         {
-            proxyServer.Stop();
-            proxyServer.Dispose();
-            CloseSystemProxy();
+            
         }
 
         /// <summary>
@@ -202,9 +200,7 @@ namespace BarrageGrab.Proxy
         /// </summary>
         override public void Start()
         {
-            proxyServer.Start();
-            proxyServer.SetAsSystemHttpProxy(explicitEndPoint);
-            proxyServer.SetAsSystemHttpsProxy(explicitEndPoint);
+            
         }
     }
 }
